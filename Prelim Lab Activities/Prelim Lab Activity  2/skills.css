@@ -1,0 +1,7 @@
+.cv-container{
+  background-color: rgba(44, 46, 57, 0.9);
+}
+
+ul li::before{
+  color: #000;
+}
