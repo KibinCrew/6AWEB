@@ -1,0 +1,37 @@
+<h1>{{ studentName }}</h1>
+
+<h1>{{ message }}</h1>
+<div class="container">
+<img [src]="imageUrl" [width]="w" [height]="h">
+</div >
+<p [style.color]="textColor">Car go brrr</p>
+<p [class.highlighted]="isHighlighted">This text is Highlighted</p>
+<input [(ngModel)]="yourName" placeholder="Enter Your Name">
+<p>Hello, {{ yourName }}</p>
+<div class="container">
+<button (click)="increment()">Increase</button>
+<button (click)="decrement()">Decrease</button>
+</div>
+<p>Count: {{ count }}</p>
+
+<section>
+  <h2>Property Binding</h2>
+  <div class="container">
+  <img [src]="imageUrl2" width="200">
+  </div>
+  <br><br>
+  <div class="container">
+  <button [disabled]="isDisabled">Submit</button>
+  </div>
+  <h2>Class Binding</h2>
+  <p [class.passing]="isPassing" [class.failing]="!isPassing">
+    Student Result: {{ isPassing ? 'Passed' : 'Failed'  }}
+  </p>
+  <div class="container"></div>
+
+  <h2>Style Binding</h2>
+  <div [style.background]="boxColor" [style.width]="boxSize" [style.height]="boxSize">
+
+  </div>
+
+</section>
