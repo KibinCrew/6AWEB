@@ -1,0 +1,68 @@
+<p>{{ title | titlecase }}</p> <!-- TitleCasePipe -->
+
+<div>
+  Today's Date is : - {{(presentDate)}}
+</div>
+
+<br>
+
+<div>
+   Today's date is :- {{presentDate | date}}
+</div>
+
+<br>
+
+<div>
+  This is a Short Date : -{{presentDate | date: 'shortDate'}} <br>
+  This line shows the full date : - {{presentDate | date: 'fullDate'}} <br>
+  This will show a formatted date : - {{presentDate | date: 'M/dd/yyyy'}} <br>
+  This indicates the hours and minutes : - {{presentDate | date: 'h:mm'}} <br>
+  Kevin Galang
+</div>
+
+<br>
+
+<div>
+  Date with uppercase : - {{presentDate | date: 'fullDate' | uppercase}} <br>
+  Date with lowercase : - {{presentDate | date: 'medium' | lowercase}} <br>
+</div>
+
+<br>
+
+<div>
+   Seconds changing in Time: {{ time$ | async | date:'mediumTime' }}
+</div>
+
+<br>
+
+<div>
+  <h3>Currency pipe</h3>
+  <p>{{price | currency : 'Php ' : true}}</p>
+  <p>{{price | currency : 'INR'}}</p>
+</div>
+
+<div>
+  <h3>Start Index : - {{Fruits | slice: 2}}</h3>
+  <h4>Start and end Index : - {{Fruits | slice:1:4}}</h4>
+  <h5>Negative Index : - {{Fruits | slice: -2}} </h5>
+  <h6>Negative Start and end Index : - {{Fruits | slice:-4:-2}}</h6>
+</div>
+
+<div>
+  <p>Apply Formatting : - {{decimalNum1 | number: '3.1'}}</p>
+  <p>Apply Formatting : - {{decimalNum2 | number: '2.1-4'}}</p>
+</div>
+
+<br>
+
+<div>
+  <h3>JSON Pipe</h3>
+  <p>{{json | json}}</p>
+</div>
+
+<br>
+
+<div>
+  <p>Current Power Usage: {{ currentUsage | percent }}</p>
+</div>
+
