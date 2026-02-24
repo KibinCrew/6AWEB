@@ -1,0 +1,58 @@
+<form (ngSubmit)="onSubmit()" #myForm="ngForm" class="form-container">
+  <h1>{{ title }}</h1>
+
+  <div class="field">
+    <input type="text" name="username" [(ngModel)]="username"
+           #u="ngModel" placeholder="Username" required class="input-box">
+    <div *ngIf="u.invalid && u.touched" class="error">Username is required</div>
+  </div>
+
+  <div class="field">
+    <input type="email" name="email" [(ngModel)]="email"
+           #e="ngModel" placeholder="Email" required email class="input-box">
+    <div *ngIf="e.invalid && e.touched" class="error">Enter a valid email</div>
+  </div>
+
+  <div class="field">
+    <input type="password" name="password" [(ngModel)]="password"
+           #p="ngModel" placeholder="Password" required minlength="6" class="input-box">
+    <div *ngIf="p.invalid && p.touched" class="error">Min 6 characters required</div>
+  </div>
+
+  <select name="role" [(ngModel)]="role" required class="input-box">
+    <option value="" disabled>Select role</option>
+    <option value="admin">Admin</option>
+    <option value="user">User</option>
+  </select>
+
+  <div class="radio-group">
+    <label><input type="radio" name="gender" [(ngModel)]="gender" value="male" required> Male</label>
+    <label><input type="radio" name="gender" [(ngModel)]="gender" value="female" required> Female</label>
+  </div>
+
+  <select name="status" [(ngModel)]="status" required class="input-box">
+    <option value="" disabled>Select status</option>
+    <option value="permanent">Permanent</option>
+    <option value="probationary">Probationary</option>
+  </select>
+
+  <textarea name="comments" [(ngModel)]="comments" placeholder="Comments" class="input-box"></textarea>
+
+  <button class="btn" type="submit" [disabled]="myForm.invalid">Submit</button>
+</form>
+
+<hr>
+
+
+<div *ngIf="submitted" class="submitted-data">
+  <h2>Submission Successful!</h2>
+  <div class="result-card">
+    <p><strong>Username:</strong> {{ username }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Role:</strong> {{ role }}</p>
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Status:</strong> {{ status }}</p>
+    <p><strong>Comments:</strong> {{ comments }}</p>
+    <p><strong>Submitted At:</strong> {{ submittedDate | date:'medium' }}</p>
+  </div>
+</div>

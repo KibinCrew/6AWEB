@@ -1,0 +1,95 @@
+/* General form styling */
+form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f9; /* light gray background */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Input and select fields */
+.input-box {
+  width: 80%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-box:focus {
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+/* Submit button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #333; /* dark gray/black */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover:enabled {
+  background: #555; /* lighter gray on hover */
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Placeholder text */
+::placeholder {
+  color: #888;
+}
+
+/* Radio buttons group */
+.radio-group {
+  margin: 15px 0;
+  display: flex;
+  gap: 15px;
+  color: #333;
+}
+
+.radio-group label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Textarea styling */
+.textarea-box {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.submitted-data {
+  margin-top: 30px;
+  padding: 15px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  background: #f0f0f0;
+  color: #333;
+}
+
+.submitted-data h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #222;
+}
