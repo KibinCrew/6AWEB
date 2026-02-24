@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="card">
+    <h1 class="title">User Registration</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-field">
+        <input class="input" placeholder="Username" formControlName="username" />
+        @if (isInvalid('username')) {
+          <small class="error">Username: 4-12 chars (letters/numbers/_)</small>
+        }
+      </div>
+
+      <div class="form-field">
+        <input class="input" type="email" placeholder="Email" formControlName="email" />
+        @if (isInvalid('email')) {
+          <small class="error">Enter a valid email address</small>
+        }
+      </div>
+
+      <div class="form-field">
+        <input class="input" type="password" placeholder="Password" formControlName="password" />
+        @if (isInvalid('password')) {
+          <small class="error">Password: 8+ with upper, lower, and number</small>
+        }
+      </div>
+
+      <div class="form-field">
+        <select class="input" formControlName="role">
+          <option value="" disabled selected>Select Role</option>
+          @for (r of roles; track r) {
+            <option [value]="r">{{ r }}</option>
+          }
+        </select>
+        @if (isInvalid('role')) {
+            <small class="error">Please select a role</small>
+        }
+      </div>
+
+      <div class="radio-section">
+        <label class="section-label">Gender</label>
+        <div class="radio-group">
+          <label><input type="radio" value="male" formControlName="gender"> Male</label>
+          <label><input type="radio" value="female" formControlName="gender"> Female</label>
+          <label><input type="radio" value="other" formControlName="gender"> Other</label>
+        </div>
+        @if (isInvalid('gender')) {
+          <small class="error">Please select a gender</small>
+        }
+      </div>
+
+      <div class="form-field">
+        <select class="input" formControlName="status">
+          <option value="" disabled selected>Select Status</option>
+          <option value="permanent">Permanent</option>
+          <option value="probationary">Probationary</option>
+        </select>
+        @if (isInvalid('status')) {
+          <small class="error">Status is required</small>
+        }
+      </div>
+
+      <div class="form-field">
+        <textarea class="input textarea" placeholder="Notes/Comments" formControlName="comments" rows="3"></textarea>
+      </div>
+
+      <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+  </div>
+
+  @if (submittedData) {
+    <div class="output-card">
+      <div class="output-header">
+        <h2>Submission Received</h2>
+        <button class="close-btn" (click)="submittedData = null">×</button>
+      </div>
+
+      <div class="data-grid">
+        <div class="data-item"><strong>Username:</strong> {{ submittedData.username }}</div>
+        <div class="data-item"><strong>Email:</strong> {{ submittedData.email }}</div>
+        <div class="data-item"><strong>Role:</strong> {{ submittedData.role }}</div>
+        <div class="data-item"><strong>Gender:</strong> {{ submittedData.gender }}</div>
+        <div class="data-item"><strong>Status:</strong> {{ submittedData.status }}</div>
+      </div>
+
+      @if (submittedData.comments) {
+        <div class="data-comments">
+          <strong>Notes:</strong>
+          <p>{{ submittedData.comments }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>
