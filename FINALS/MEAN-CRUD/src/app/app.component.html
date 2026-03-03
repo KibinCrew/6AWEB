@@ -1,0 +1,51 @@
+<div class="app-container">
+  <header>
+    <h1>{{ isEditing ? 'Edit Book' : 'Bookshelf' }}</h1>
+
+    <div class="form-grid">
+      <input [(ngModel)]="currentBook.title" placeholder="Title">
+      <input [(ngModel)]="currentBook.author" placeholder="Author">
+      <input [(ngModel)]="currentBook.genre" placeholder="Genre">
+      <input [(ngModel)]="currentBook.price" type="number" placeholder="Price ($)">
+      <textarea [(ngModel)]="currentBook.desc" placeholder="Description" class="full-width"></textarea>
+
+      <div class="button-group">
+        <button class="add-btn" (click)="saveBook()">
+          {{ isEditing ? 'Update' : 'Add' }} Book
+        </button>
+        <button *ngIf="isEditing" class="cancel-btn" (click)="resetForm()">Cancel</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="🔍 Search by title or author...">
+  </div>
+
+  <hr class="divider">
+
+  <section class="book-list">
+    @for (book of filteredBooks; track book.id) {
+      <div class="book-card">
+        <div class="book-info">
+          <div class="header-row">
+            <span class="title">{{ book.title }}</span>
+            <span class="genre">{{ book.genre }}</span>
+          </div>
+          <span class="author">by {{ book.author }}</span>
+          <span class="desc">{{ book.description }}</span>
+          <span class="price">${{ book.price }}</span>
+        </div>
+
+        <div class="actions">
+          <button class="edit-btn" (click)="editBook(book)">Edit</button>
+          <button class="delete-btn" (click)="deleteBook(book.id)">Delete</button>
+        </div>
+      </div>
+    } @empty {
+      <p class="empty-state">No matches found.</p>
+    }
+  </section>
+
+  <router-outlet />
+</div>
